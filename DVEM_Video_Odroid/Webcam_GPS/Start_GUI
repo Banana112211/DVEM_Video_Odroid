@@ -1,0 +1,5 @@
+#Programm um die GUI.py schnell zu starten
+cd DVEM_Video_Odroid/Webcam_GPS # Wechselt zur Ordner in dem sich GUI.py befindet
+echo odroid | sudo -S mate-terminal --window --command "python GUI.py"
+
+
