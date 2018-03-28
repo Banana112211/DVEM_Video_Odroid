@@ -153,11 +153,11 @@ class MainWindow:
 
             self.gps_sensor_1=Process(target=gps_sensor.gps_signal, args=(dir_path,))
             self.gps_sensor_1.start()
-            self.cam_1 = Process(target=video.videoaufzeichnung, args=(320,240,selected_listbox_Fahrer,40000,20))#Fahrer
+            self.cam_1 = Process(target=video.videoaufzeichnung, args=(320,240,selected_listbox_Fahrer,4000000,20))#Fahrer
             self.cam_1.start()
-            self.cam_2 = Process(target=video.videoaufzeichnung, args=(960, 544,selected_listbox_Front,40000,80)) #Front
+            self.cam_2 = Process(target=video.videoaufzeichnung, args=(960, 544,selected_listbox_Front,4000000,80)) #Front
             self.cam_2.start()
-            self.cam_3 = Process(target=video.videoaufzeichnung, args=(432,240,selected_listbox_Heck,40000,20)) #Heck
+            self.cam_3 = Process(target=video.videoaufzeichnung, args=(432,240,selected_listbox_Heck,4000000,20)) #Heck
             self.cam_3.start()
             
         except:
