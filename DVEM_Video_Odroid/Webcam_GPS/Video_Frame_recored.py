@@ -32,7 +32,7 @@ def videoaufzeichnung(video_wdth,video_hight,eingang,num_frames=1000,qual=90):
     cwd= dir_path+"/"+folder_name #Das ist der Name in der 
     #4.Step: erstelle kamera.txt mit spalten ueberschrift
     os.chdir(dir_path) 
-    Write_Logfile.logfile_schreiben('"Input","Wdth","hight","Timestamp","Number","Speicherort"',str(folder_name),dir_path)
+    Write_Logfile.logfile_schreiben('"Input","Wdth","hight","Timestamp","Time","Number","Speicherort"',str(folder_name),dir_path)
     #5.Step: Kamera benoentig etwas aufwaermzeit, daher wird While-Loop bis success= true ist
     success,image = cap.read()    
     while success==False:
@@ -48,7 +48,8 @@ def videoaufzeichnung(video_wdth,video_hight,eingang,num_frames=1000,qual=90):
         success,image = cap.read()
         message= str(folder_name)+"_"+str(timestamp)+"_Nummer "+str(i)+","#DIESE ZEILE fuer windows verwenden 
         cv2.imwrite(cwd+"/"+message.split("/")[1]+".jpg", image, [int(cv2.IMWRITE_JPEG_QUALITY), qual]) #Speichert frame mit einer absoluten Addresierung
-        message2= str(folder_name)+","+str(timestamp)+",Nummer"+str(i)+","+str(cwd+"/"+message+".jpg")
+        message2="Kamera_"+str(eingang)+","+str(video_wdth)+","+str(video_hight)+","+str(timestamp)+","+str(time.ctime(time.time()))+","+str(i)+","+str(message.split("/")[1]+".jpg")
+        #message2= str(folder_name)+","+str(timestamp)+",Nummer"+str(i)+","+str(cwd+"/"+message+".jpg")
         os.chdir(dir_path) 
         Write_Logfile.logfile_schreiben(message2[:-1],str(folder_name),dir_path)
         i += 1
@@ -73,7 +74,7 @@ if __name__=="__main__":
     #    videoaufzeichnung(element[0],element[1],0,dir_path)
     #================
     dir_path = os.path.dirname(os.path.realpath(__file__))
-    videoaufzeichnung(176,144,0,1000,90)
+    videoaufzeichnung(320,240,0,1000,90)
     
     
     
